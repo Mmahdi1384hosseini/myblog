@@ -19,9 +19,9 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 
-def post_detail(request, pik):
-    post = get_object_or_404(Post, pk=pik)
-    return render(request, 'blog/post_detail.html', {'p': post})
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
 
 def post_list2(requests):
     ls=Post.objects.all()
@@ -40,7 +40,7 @@ def post_list(requests):
 def create100(requests):
     me = User.objects.get(username='admin')
     for i in range(100):
-        p=Post.objects.create(author=me, title=f'fotball_omid{i}', text=f'fotball_omid dar barabar hongkong baxt {i}')
+        p=Post.objects.create(author=me, title=f'Sport{i}', text=f'football iran VS hongkong{i}')
 
         p.publish()
     return HttpResponse("Done")
